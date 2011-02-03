@@ -1,0 +1,30 @@
+import edu.ucdavis.jr.*;
+
+public class Filtrer {
+
+  public op void output(int num);
+  public cap void(int) pipeline[];
+
+  public filter() {
+    
+  }
+
+
+  public process filter((int i=0;i<N;i++)) {
+    int prime, number;
+
+    receive pipeline[i](prime);
+    call output(prime);
+
+    while (true) {
+      receive pipeline[i](number);
+      if (number%prime > 0)
+	call pipeline[i+1](number);
+    }
+  }
+
+  //
+  public static void main(String[] args) {
+    Sieve s = new Sieve();
+  }
+}

@@ -1,0 +1,55 @@
+import edu.ucdavis.jr.*;
+
+public class Sieve {
+
+  private int N;
+  public op void output(int num);
+  public cap void(int) pipeline[];
+
+  public Sieve(int N) {
+    this.N = N;
+    pipeline = new cap void(int)[N+1];
+    for(int i=0;i<(N+1);i++)
+      pipeline[i] = new op void(int);
+  }
+
+  public process print {
+    int number;
+    while (true) {
+      receive output(number);
+      System.out.println(number);
+    }
+  }
+
+  public process nums {
+    for(int i=3;i<(20*N);i+=2) {
+      call pipeline[0](i);
+    }
+  }
+
+  public process eat {
+    int number;
+    while (true)
+      receive pipeline[N](number);
+  }
+
+  public process filter((int i=0;i<N;i++)) {
+    int prime, number;
+
+    receive pipeline[i](prime);
+    call output(prime);
+
+    while (true) {
+      receive pipeline[i](number);
+      if (number%prime > 0)
+	call pipeline[i+1](number);
+    }
+  }
+
+  //
+  // The number of primes to generate is a command line parameter
+  //
+  public static void main(String[] args) {
+    Sieve s = new Sieve(Integer.parseInt(args[0]));
+  }
+}

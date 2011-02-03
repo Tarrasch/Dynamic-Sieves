@@ -1,0 +1,37 @@
+import edu.ucdavis.jr.*;
+
+public class Filter {
+
+  public cap void (int) output;
+  public cap void (int) channel ;
+
+  public Filter(cap void(int) channel, cap void(int) output) {
+    this.channel = channel;
+    this.output = output;
+    
+  }
+
+
+  public process filter {
+    int prime, number;
+
+    receive channel(prime);        
+    call output(prime);    
+    cap void (int) newChannel = new op void(int);
+    Filter f = new Filter(newChannel, output);
+    
+    while (true) {
+      receive channel(number);
+      if(number % prime != 0)
+	{
+	  call newChannel(number);
+	}      
+    }
+  }
+
+
+  public static void main(String[] args) {
+    
+  }
+
+}

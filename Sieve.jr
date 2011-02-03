@@ -1,0 +1,34 @@
+import edu.ucdavis.jr.*;
+
+
+public class Sieve {
+
+  public op void output(int num);
+
+  public Sieve() {
+  }
+
+  public process print {
+    int number;
+    while (true) {
+      receive output(number);
+      System.out.println(number);
+    }
+  }
+
+  public process nums {
+
+    cap void (int) channel = new op void(int);
+    Filter f = new Filter(channel, output);
+    
+    for(int i=2; true;i++) {
+      send channel(i);
+    }
+  }
+
+
+  //
+  public static void main(String[] args) {
+    Sieve s = new Sieve();
+  }
+}
